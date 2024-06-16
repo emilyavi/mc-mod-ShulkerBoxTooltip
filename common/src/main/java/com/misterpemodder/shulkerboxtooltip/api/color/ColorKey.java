@@ -186,7 +186,7 @@ public interface ColorKey {
   }
 
   private static ColorKey ofDye(DyeColor dye) {
-    var color = dye.getTextureDiffuseColors();
+    var color = ShulkerBoxTooltipUtil.rgbToComponents(dye.getTextureDiffuseColor());
     var clamped = new float[] {Math.max(0.15f, color[0]), Math.max(0.15f, color[1]), Math.max(0.15f, color[2])};
     return new ColorKeyImpl(Arrays.copyOf(clamped, 3), clamped);
   }

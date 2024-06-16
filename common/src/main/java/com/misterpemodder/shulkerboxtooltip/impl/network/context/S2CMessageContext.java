@@ -15,7 +15,8 @@ public record S2CMessageContext<T>(Channel<T> channel) implements MessageContext
 
   @Override
   public LocalPlayer getPlayer() {
-    return Minecraft.getInstance().player;
+    var instance = Minecraft.getInstance();
+    return instance.player;
   }
 
   @Override

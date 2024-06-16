@@ -45,9 +45,11 @@ public record S2CEnderChestUpdate(@Nullable ListTag nbtInventory) {
       if (message.nbtInventory == null)
         return;
 
-      Minecraft.getInstance().execute(() -> {
-        if (Minecraft.getInstance().player != null) {
-          var player = Minecraft.getInstance().player;
+      var instance = Minecraft.getInstance();
+
+      instance.execute(() -> {
+        if (instance.player != null) {
+          var player = instance.player;
           player.getEnderChestInventory().fromTag(message.nbtInventory, player.registryAccess());
         }
       });
